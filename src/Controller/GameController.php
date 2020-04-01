@@ -25,12 +25,15 @@ class GameController extends AbstractController
 
 
         // save round in db
-        $dataStoreHelper->storeRound(
-            new NetworkRequest('/rounds', 'POST', uniqid('lm_', true), [])
+        $networkResponse = $dataStoreHelper->storeRound(
+            new NetworkRequest('/rounds', 'POST', uniqid('lm_', true), [
+                'status' => 1,
+                'results' => [1, 1, 1]
+            ])
         );
 
         return $this->json([
-            'message' => 'Game processing!',
+            'message' => $networkResponse->getBody(),
         ]);
     }
 }
