@@ -33,7 +33,7 @@ class DataStoreHelper extends AbstractNetworkHelper
     {
         parent::__construct(
             'loterioma_core_helper',
-            'http://loterioma_core',
+            'http://api',
             80
         );
     }
@@ -45,6 +45,6 @@ class DataStoreHelper extends AbstractNetworkHelper
      */
     public function storeRound(NetworkRequestInterface $networkRequest): NetworkResponseInterface
     {
-        return $this->makeGetRequest($networkRequest->getEndpoint(), $networkRequest->getRequestParams());
+        return $this->makeRequest($networkRequest);
     }
 }
