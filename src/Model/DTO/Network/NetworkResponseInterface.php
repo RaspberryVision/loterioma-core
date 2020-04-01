@@ -13,9 +13,9 @@ interface NetworkResponseInterface
     /**
      * Get response body.
      *
-     * @return array
+     * @return array|null
      */
-    public function getBody(): array;
+    public function getBody(): ?array;
 
     /**
      * Get response status code.

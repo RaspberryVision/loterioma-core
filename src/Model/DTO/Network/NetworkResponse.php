@@ -15,7 +15,7 @@ namespace App\Model\DTO\Network;
 class NetworkResponse implements NetworkResponseInterface
 {
     /**
-     * @var array
+     * @var array|null
      */
     private $body;
 
@@ -31,11 +31,11 @@ class NetworkResponse implements NetworkResponseInterface
 
     /**
      * RNGResponse constructor.
-     * @param array|string $body
+     * @param string|null $body
      * @param int $statusCode
      * @param string $requestHash
      */
-    public function __construct($body, int $statusCode, string $requestHash)
+    public function __construct(?string $body, int $statusCode, string $requestHash)
     {
         $this->body = json_decode($body, true);
         $this->statusCode = $statusCode;
@@ -43,9 +43,9 @@ class NetworkResponse implements NetworkResponseInterface
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getBody(): array
+    public function getBody(): ?array
     {
         return $this->body;
     }

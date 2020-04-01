@@ -56,12 +56,7 @@ class NetworkRequest implements NetworkRequestInterface
      */
     public function getRequestParams(): array
     {
-        return [
-            'hash' => $this->componentHash,
-            'time' => date('Y-m-d H:i:s'),
-            'requestHash' => uniqid('eng_rng_', true),
-            'body' => $this->body
-        ];
+        return $this->body;
     }
 
     /**
