@@ -13,6 +13,7 @@
 
 namespace App\NetworkHelper\Core;
 
+use App\Model\DTO\Network\NetworkRequest;
 use App\Model\DTO\Network\NetworkRequestInterface;
 use App\Model\DTO\Network\NetworkResponseInterface;
 use App\NetworkHelper\AbstractNetworkHelper;
@@ -40,11 +41,13 @@ class DataStoreHelper extends AbstractNetworkHelper
 
     /**
      * Method returns
-     * @param NetworkRequestInterface $networkRequest
+     * @param Object $round
      * @return NetworkResponseInterface
      */
-    public function storeRound(NetworkRequestInterface $networkRequest): NetworkResponseInterface
+    public function storeRound($round): NetworkResponseInterface
     {
-        return $this->makeRequest($networkRequest);
+        return $this->makeRequest(
+            new NetworkRequest('/rounds', 'POST', uniqid('lm_', true), $round)
+        );
     }
 }
