@@ -54,7 +54,7 @@ class NetworkRequest implements NetworkRequestInterface
      *
      * @return array
      */
-    public function getRequestParams(): array
+    public function getRequestParams()
     {
         return $this->body;
     }
