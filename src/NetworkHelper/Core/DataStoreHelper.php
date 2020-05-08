@@ -47,7 +47,12 @@ class DataStoreHelper extends AbstractNetworkHelper
     public function storeRound($round): NetworkResponseInterface
     {
         return $this->makeRequest(
-            new NetworkRequest('/rounds', 'POST', uniqid('lm_', true), $round)
+            new NetworkRequest(
+                '/dice-rounds',
+                'POST',
+                uniqid('lm_', true),
+                $round
+            )
         );
     }
 }

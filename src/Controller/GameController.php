@@ -27,7 +27,7 @@ class GameController extends AbstractController
 
 
         // save round in db
-        $networkResponse = $dataStoreHelper->storeRound(json_decode($request->getContent(), true));
+        $networkResponse = $dataStoreHelper->storeRound($request->getContent());
 
         return $this->json([
             'message' => $networkResponse->getBody(),

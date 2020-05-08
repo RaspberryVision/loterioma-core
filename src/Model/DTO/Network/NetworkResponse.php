@@ -15,7 +15,7 @@ namespace App\Model\DTO\Network;
 class NetworkResponse implements NetworkResponseInterface
 {
     /**
-     * @var array|null
+     * @var string
      */
     private $body;
 
@@ -37,7 +37,7 @@ class NetworkResponse implements NetworkResponseInterface
      */
     public function __construct(?string $body, int $statusCode, string $requestHash)
     {
-        $this->body = json_decode($body, true);
+        $this->body = $body;
         $this->statusCode = $statusCode;
         $this->requestHash = $requestHash;
     }
@@ -45,7 +45,7 @@ class NetworkResponse implements NetworkResponseInterface
     /**
      * @return array|null
      */
-    public function getBody(): ?array
+    public function getBody(): ?string
     {
         return $this->body;
     }
