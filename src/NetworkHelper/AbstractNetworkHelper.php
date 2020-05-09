@@ -83,18 +83,21 @@ abstract class AbstractNetworkHelper
             'LM-COMP-HASH: ' . $networkRequest->getComponentHash(),
             'LM-TIME: ' . date('Y-m-d H:i:s'),
             'LM-REQUEST-HASH: ' . uniqid('eng_rng_', true),
-            'Content-Type: application/ld+json'
+            'Content-Type: application/ld+json',
+            'Accept: application/json'
         ]);
 
         if ('POST' === $networkRequest->getMethod()) {
             curl_setopt($ch, CURLOPT_POST, 1);
         }
 
-        if (count($networkRequest->getRequestParams()) > 0) {
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($networkRequest->getRequestParams()));
+        if ($networkRequest->getRequestParams()) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $networkRequest->getRequestParams());
         }
 
         $response = curl_exec($ch);
+        var_dump($networkRequest->getRequestParams());
+        var_dump($response);exit();
         if (!$response) {
             return $this->createResponse(json_encode([
                 'message' => curl_error($ch),
