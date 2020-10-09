@@ -17,15 +17,14 @@ class GameController extends AbstractController
     /**
      * @Route("/", name="core_game_process")
      * @param Request $request
-     * @param DataStoreHelper $dataStoreHelper
      * @return JsonResponse
      */
-    public function process(Request $request, DataStoreHelper $dataStoreHelper): JsonResponse
+    public function process(Request $request): JsonResponse
     {
         // if win -> process
         // send to bank - update amounts
 
-
+        var_dump($request->get('kozak'));exit();
         // save round in db
         $networkResponse = $dataStoreHelper->storeRound($request->getContent());
 
